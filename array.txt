@@ -1,0 +1,31 @@
+// Definir la función filtrar
+function filtrar(funcion) {
+    // Agregar una función al prototipo de Array para filtrar elementos
+    Array.prototype.filtrar = function(callback) {
+        // Arreglo para almacenar los elementos filtrados
+        let resultado = [];
+
+        // Iterar sobre cada elemento del arreglo
+        for (let i = 0; i < this.length; i++) {
+            // Llamar a la función de callback y pasarle el elemento actual
+            // Si la función de callback devuelve true, agregar el elemento al arreglo resultado
+            if (callback(this[i])) {
+                resultado.push(this[i]);
+            }
+        }
+
+        // Devolver el arreglo con los elementos filtrados
+        return resultado;
+    };
+}
+
+// Ejemplo de uso de la función filtrar
+filtrar();
+
+// Ejemplo de uso
+let arreglo = [1, 2, 3, 4, 5];
+let arregloFiltrado = arreglo.filtrar(function(elemento) {
+    return elemento > 2; // Filtrar elementos mayores que 2
+});
+
+console.log(arregloFiltrado); // Output: [3, 4, 5]
